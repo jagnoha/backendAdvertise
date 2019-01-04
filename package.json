@@ -1,0 +1,36 @@
+{
+  "name": "myserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app_2",
+  "typings": "app_2",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "amazon-mws": "0.0.23",
+    "assert": "^1.4.1",
+    "axios": "^0.18.0",
+    "compression": "^1.7.3",
+    "cors": "^2.8.5",
+    "download": "^7.1.0",
+    "ebay-api": "^1.13.7",
+    "ebay-node-api": "^2.4.1",
+    "express": "^4.16.4",
+    "fs": "0.0.1-security",
+    "hummus": "^1.0.95",
+    "is-online": "^8.0.0",
+    "jsonfile": "^5.0.0",
+    "jsonq": "^1.2.0",
+    "make-string": "^1.0.2",
+    "mongodb": "^3.1.10",
+    "mongoose": "^5.4.1",
+    "uuid": "^3.3.2",
+    "x-ray": "^2.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "^10.12.18"
+  }
+}

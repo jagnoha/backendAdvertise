@@ -21,6 +21,7 @@
     "ebay-node-api": "^2.4.1",
     "express": "^4.16.4",
     "fs": "0.0.1-security",
+    "hoek": "^6.1.2",
     "hummus": "^1.0.95",
     "is-online": "^8.0.0",
     "jsonfile": "^5.0.0",

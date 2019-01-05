@@ -69,6 +69,7 @@ const ListingSchema = new mongoose.Schema({
     category: Object,
     brand: String,
     partNumbers: Array,
+    upc: String,
     pictures: Array,
     location: Array,
     quantity: Number,
@@ -667,46 +668,42 @@ app.get('/updatelisting/:sku/:fields', function(req, res){
 
 
 
-        let fieldsParameters = {
-            "sku": objeto.sku,
-            "uuid": objeto.sku,
-            "quantity": objeto.quantity,
-            "price": objeto.price,
-            "title": objeto.title,
-            "brand": objeto.brand,
-            "partNumbers": objeto.partNumbers,
-            "bestOffer": objeto.bestOffer,
-            "description": objeto.description,
-            "condition": objeto.condition,
-            "conditionDescription": objeto.conditionDescription !== null && objeto.condition !== '0' ? objeto.conditionDescription : [],
-            "location": objeto.location,
-            "freeShipping": objeto.freeShipping,
-            "domestic": objeto.domestic,
-            "international": objeto.international,
-            "length": objeto.length,
-            "width": objeto.width,
-            "depth": objeto.depth,
-            "weight": objeto.weight,
-            "weightUnit": objeto.weightUnit,
-            "category": objeto.category,
-            "lastModified": new Date,
-            "ebayAccount": objeto.ebayAccount,
-            "status": "offline",
-        }
-    
-        Listing.find({"sku": sku}, function(err, result){
-            
-            if (result.length === 0){
+    Listing.find({"sku": sku}, function(err, result){
 
-                Listing.insert(fieldsParameters, function(err, raw){
-                    if (err) throw Error("Network Error!");
-                    
-                    res.send(raw);
-                });
-
-            }
-
+        const newListing = new Listing({
+            sku: objeto.sku,
+            uuid: objeto.sku,
+            quantity: objeto.quantity,
+            price: objeto.price,
+            title: objeto.title,
+            brand: objeto.brand,
+            partNumbers: objeto.partNumbers,
+            upc: objeto.upc,
+            bestOffer: objeto.bestOffer,
+            description: objeto.description,
+            condition: objeto.condition,
+            conditionDescription: objeto.conditionDescription !== null && objeto.condition !== '0' ? objeto.conditionDescription : [],
+            location: objeto.location,
+            freeShipping: objeto.freeShipping,
+            domestic: objeto.domestic,
+            international: objeto.international,
+            length: objeto.length,
+            width: objeto.width,
+            depth: objeto.depth,
+            weight: objeto.weight,
+            weightUnit: objeto.weightUnit,
+            category: objeto.category,
+            timestamp: new Date,
+            ebayAccount: objeto.ebayAccount,
+            status: "offline",
+            authorId: objeto.authorId,
         })
+
+        newListing.save().then(() => {                                
+            console.log('New Listing created');
+            res.send(true)
+        })
+    })
 
   })
 
